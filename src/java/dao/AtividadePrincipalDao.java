@@ -1,0 +1,49 @@
+package dao;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.util.List;
+import model.AtividadePrincipal;
+import utils.Conexao;
+
+public class AtividadePrincipalDao implements DaoGenerica {
+    
+    private Connection conexao;
+    
+    public AtividadePrincipalDao() throws ClassNotFoundException, SQLException {
+        conexao = Conexao.abrirConexao();
+    }
+    
+    @Override
+    public void cadastrar(Object objeto) throws SQLException {
+        String sql = "call cadastrarAtividadePrincipal(?, ?)";
+        AtividadePrincipal atividadePrincipal = (AtividadePrincipal) objeto;
+        PreparedStatement stmt = null;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, atividadePrincipal.getCodigoAtividadePrincipal());
+            stmt.setString(2, atividadePrincipal.getDescricaoAtividadePrincipal());
+            stmt.execute();
+        } catch (SQLException ex) {
+            throw new SQLException("Erro ao gravar atividade principal");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt);
+        }
+    }
+    
+    @Override
+    public Object consultar(int codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public List<Object> listar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    @Override
+    public void excluir(int codigo) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+}
