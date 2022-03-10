@@ -7,13 +7,17 @@ public class Consulta {
     private String horarioConsulta;
     private String situacaoConsulta;
     private String observacoesConsulta;
+    private Paciente paciente;
+    private Medico medico;
 
-    public Consulta(int codigoConsulta, String dataConsulta, String horarioConsulta, String situacaoConsulta, String observacoesConsulta) {
+    public Consulta(int codigoConsulta, String dataConsulta, String horarioConsulta, String situacaoConsulta, String observacoesConsulta, Paciente paciente, Medico medico) {
         this.codigoConsulta = codigoConsulta;
         this.dataConsulta = dataConsulta;
         this.horarioConsulta = horarioConsulta;
         this.situacaoConsulta = situacaoConsulta;
         this.observacoesConsulta = observacoesConsulta;
+        this.paciente = paciente;
+        this.medico = medico;
     }
 
     public int getCodigoConsulta() {
@@ -56,4 +60,19 @@ public class Consulta {
         this.observacoesConsulta = observacoesConsulta;
     }
 
+    public Paciente getPaciente() {
+        return paciente;
+    }
+
+    public void setPaciente(Paciente paciente) {
+        this.paciente = paciente;
+    }
+
+    public Medico getMedico() {
+        return medico;
+    }
+
+    public void setMedico(Medico medico) {
+        this.medico = medico;
+    }
 }
