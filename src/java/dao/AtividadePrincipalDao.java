@@ -36,8 +36,7 @@ public class AtividadePrincipalDao implements DaoGenerica {
 
     @Override
     public Object consultar(int codigo) throws SQLException {
-        String sql = "select * from atividadeprincipal "
-                + "where codigoatividadeprincipal = ?";
+        String sql = "select * from atividadeprincipal where codigoatividadeprincipal = ?";
         PreparedStatement stmt = null;
         ResultSet rs = null;
         AtividadePrincipal atividadePrincipal = null;
@@ -46,10 +45,7 @@ public class AtividadePrincipalDao implements DaoGenerica {
             stmt.setInt(1, codigo);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                atividadePrincipal
-                        = new AtividadePrincipal(
-                                rs.getInt("codigoatividadeprincipal"),
-                                rs.getString("descricaoatividadeprincipal"));
+                atividadePrincipal = new AtividadePrincipal(rs.getInt("codigoatividadeprincipal"), rs.getString("descricaoatividadeprincipal"));
             }
         } catch (SQLException ex) {
             throw new SQLException("Erro ao consultar atividade principal");
@@ -69,10 +65,7 @@ public class AtividadePrincipalDao implements DaoGenerica {
             stmt = conexao.prepareStatement(sql);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                AtividadePrincipal atividadePrincipal
-                        = new AtividadePrincipal(
-                                rs.getInt("codigoatividadeprincipal"),
-                                rs.getString("descricaoatividadeprincipal"));
+                AtividadePrincipal atividadePrincipal = new AtividadePrincipal(rs.getInt("codigoatividadeprincipal"), rs.getString("descricaoatividadeprincipal"));
                 lista.add(atividadePrincipal);
             }
         } catch (SQLException ex) {
@@ -85,8 +78,7 @@ public class AtividadePrincipalDao implements DaoGenerica {
 
     @Override
     public void excluir(int codigo) throws SQLException {
-        String sql = "delete from atividadeprincipal "
-                + "where codigoatividadeprincipal = ?";
+        String sql = "delete from atividadeprincipal where codigoatividadeprincipal = ?";
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
