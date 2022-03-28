@@ -2,6 +2,7 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 import model.AtividadePrincipal;
@@ -34,7 +35,21 @@ public class AtividadePrincipalDAO implements DAOGenerica {
 
     @Override
     public Object consultar(int codigo) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "select * from atividadeprincipal where codigoatividadeprincipal = ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        AtividadePrincipal atividadePrincipal = null;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                atividadePrincipal = new AtividadePrincipal(rs.getInt("codigoatividadeprincipal"), rs.getString("descricaoatividadeprincipal"));
+            }
+        } catch (SQLException ex) {
+            throw new SQLException("Erro ao consultar atividade principal");
+        }
+        return atividadePrincipal;
     }
 
     @Override
