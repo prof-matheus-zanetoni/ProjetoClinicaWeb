@@ -8,26 +8,26 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import model.AtividadePrincipal;
 
-@WebServlet(name = "ConsultarAtividadePrincipal", urlPatterns = {"/ConsultarAtividadePrincipal"})
-public class ConsultarAtividadePrincipal extends HttpServlet {
+@WebServlet(name = "ExcluirAtividadePrincipal", urlPatterns = {"/ExcluirAtividadePrincipal"})
+public class ExcluirAtividadePrincipal extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-
+        
         try {
             int codigoAtividadePrincipal = Integer.parseInt(request.getParameter("codigoAtividadePrincipal"));
 
             AtividadePrincipalDAO atividadePrincipalDAO = new AtividadePrincipalDAO();
+            atividadePrincipalDAO.excluir(codigoAtividadePrincipal);
             
-            request.setAttribute("atividadePrincipal", atividadePrincipalDAO.consultar(codigoAtividadePrincipal));
+            request.setAttribute("mensagem", "Excluído com sucesso!");
         } catch (SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());
         }
         
-        request.getRequestDispatcher("cadastrarAtividadePrincipal.jsp").forward(request, response);
+        request.getRequestDispatcher("ListarAtividadePrincipal").forward(request, response);
     }
 
     @Override
