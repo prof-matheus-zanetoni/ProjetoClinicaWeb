@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import model.AtividadePrincipal;
 import utils.Conexao;
@@ -48,17 +49,46 @@ public class AtividadePrincipalDAO implements DAOGenerica {
             }
         } catch (SQLException ex) {
             throw new SQLException("Erro ao consultar atividade principal");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt, rs);
         }
         return atividadePrincipal;
     }
 
     @Override
     public List<Object> listar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "select * from atividadeprincipal";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        AtividadePrincipal atividadePrincipal = null;
+        List<Object> lista = new ArrayList<>();
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                atividadePrincipal = new AtividadePrincipal(rs.getInt("codigoatividadeprincipal"), rs.getString("descricaoatividadeprincipal"));
+                lista.add(atividadePrincipal);
+            }
+        } catch (SQLException ex) {
+            throw new SQLException("Erro ao listar atividade principal");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt, rs);
+        }
+        return lista;
     }
 
     @Override
     public void excluir(int codigo) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "delete from atividadeprincipal where codigoatividadeprincipal = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            stmt.execute();
+        } catch (SQLException ex) {
+            throw new SQLException("Erro ao excluir atividade principal");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt);
+        }
     }
 }
