@@ -31,7 +31,7 @@ public class CadastrarAtividadePrincipal extends HttpServlet {
         } catch (SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());
         }
-        request.getRequestDispatcher("cadastrarAtividadePrincipal.jsp").forward(request, response);
+        request.getRequestDispatcher("NovaAtividadePrincipal").forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
