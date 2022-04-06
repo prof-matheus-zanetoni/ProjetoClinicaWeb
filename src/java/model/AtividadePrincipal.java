@@ -9,6 +9,10 @@ public class AtividadePrincipal {
         this.codigoAtividadePrincipal = codigoAtividadePrincipal;
         this.descricaoAtividadePrincipal = descricaoAtividadePrincipal;
     }
+    
+    public AtividadePrincipal() {
+        
+    }
 
     public int getCodigoAtividadePrincipal() {
         return codigoAtividadePrincipal;
