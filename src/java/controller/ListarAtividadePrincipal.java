@@ -1,7 +1,7 @@
 
 package controller;
 
-import dao.AtividadePrincipalDao;
+import dao.AtividadePrincipalDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -18,9 +18,9 @@ public class ListarAtividadePrincipal extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         
         try {            
-            AtividadePrincipalDao atividadePrincipalDao = new AtividadePrincipalDao();
+            AtividadePrincipalDAO atividadePrincipalDAO = new AtividadePrincipalDAO();
             
-            request.setAttribute("atividadesPrincipais", atividadePrincipalDao.listar());
+            request.setAttribute("atividadesPrincipais", atividadePrincipalDAO.listar());
             
         } catch(SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());

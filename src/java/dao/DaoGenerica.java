@@ -3,7 +3,7 @@ package dao;
 import java.sql.SQLException;
 import java.util.List;
 
-public interface DaoGenerica {
+public interface DAOGenerica {
 
     public void cadastrar(Object objeto) throws SQLException;
 

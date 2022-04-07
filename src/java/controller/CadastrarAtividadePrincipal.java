@@ -1,6 +1,6 @@
 package controller;
 
-import dao.AtividadePrincipalDao;
+import dao.AtividadePrincipalDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -23,7 +23,7 @@ public class CadastrarAtividadePrincipal extends HttpServlet {
 
             AtividadePrincipal atividadePrincipal = new AtividadePrincipal(codigoAtividadePrincipal, descricaoAtividadePrincipal);
 
-            AtividadePrincipalDao atividadePrincipalDao = new AtividadePrincipalDao();
+            AtividadePrincipalDAO atividadePrincipalDao = new AtividadePrincipalDAO();
 
             atividadePrincipalDao.cadastrar(atividadePrincipal);
 

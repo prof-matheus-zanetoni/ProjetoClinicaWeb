@@ -1,7 +1,7 @@
 
 package controller;
 
-import dao.AtividadePrincipalDao;
+import dao.AtividadePrincipalDAO;
 import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
@@ -20,7 +20,7 @@ public class ConsultarAtividadePrincipal extends HttpServlet {
         try {
             int codigoAtividadePrincipal = Integer.parseInt(request.getParameter("codigoAtividadePrincipal"));
             
-            AtividadePrincipalDao atividadePrincipalDao = new AtividadePrincipalDao();
+            AtividadePrincipalDAO atividadePrincipalDao = new AtividadePrincipalDAO();
             
             request.setAttribute("atividadePrincipal", atividadePrincipalDao.consultar(codigoAtividadePrincipal));
             

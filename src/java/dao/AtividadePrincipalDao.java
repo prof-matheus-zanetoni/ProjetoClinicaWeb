@@ -9,11 +9,11 @@ import java.util.List;
 import model.AtividadePrincipal;
 import utils.Conexao;
 
-public class AtividadePrincipalDao implements DaoGenerica {
+public class AtividadePrincipalDAO implements DAOGenerica {
 
     private Connection conexao;
 
-    public AtividadePrincipalDao() throws ClassNotFoundException, SQLException {
+    public AtividadePrincipalDAO() throws ClassNotFoundException, SQLException {
         conexao = Conexao.abrirConexao();
     }
 
