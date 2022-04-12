@@ -6,23 +6,17 @@
         <div class="row my-3">
             <div class="form-group col-6">
                 <label for="codigoAtividadePrincipal">Código:</label>
-                <input type="text" 
-                       class="form-control" id="codigoAtividadePrincipal"
-                       name="codigoAtividadePrincipal" readonly/>
+                <input type="text" class="form-control" id="codigoAtividadePrincipal" name="codigoAtividadePrincipal" readonly value="${atividadePrincipal.codigoAtividadePrincipal}"/>
             </div>
             <div class="form-group col-6">
                 <label for="descricaoAtividadePrincipal">Descrição:</label>
-                <input type="text" 
-                       class="form-control" id="descricaoAtividadePrincipal"
-                       name="descricaoAtividadePrincipal" placeholder="Descrição" required/>
+                <input type="text" class="form-control" id="descricaoAtividadePrincipal" name="descricaoAtividadePrincipal" placeholder="Descrição" required value="${atividadePrincipal.descricaoAtividadePrincipal}"/>
             </div>
         </div>
         <div class="row my-3">
             <div class="form-group col-12 text-center">
-                <button class="btn btn-success" 
-                        type="submit">Cadastrar</button>
-                <a href="ListarAtividadePrincipal"
-                   class="btn btn-secondary">Voltar</a>
+                <button class="btn btn-success" type="submit">Cadastrar</button>
+                <a href="ListarAtividadePrincipal" class="btn btn-secondary">Voltar</a>
             </div>
         </div>
     </form>
