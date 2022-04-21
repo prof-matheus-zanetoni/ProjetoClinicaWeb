@@ -6,7 +6,7 @@
         <div class="row my-3">
             <div class="form-group col-6">
                 <label for="codigoAtividadePrincipal">Código:</label>
-                <input type="text" class="form-control" id="codigoAtividadePrincipal" name="codigoAtividadePrincipal" readonly value="${atividadePrincipal.codigoAtividadePrincipal}"/>
+                <input type="text" class="form-control" id="codigoAtividadePrincipal" name="codigoAtividadePrincipal" readonly value="${atividadePrincipal.codigoAtividadePrincipal  > 0 ? atividadePrincipal.codigoAtividadePrincipal : ""}"/>
             </div>
             <div class="form-group col-6">
                 <label for="descricaoAtividadePrincipal">Descrição:</label>
