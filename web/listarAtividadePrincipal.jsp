@@ -4,7 +4,7 @@
 <jsp:include page="/cabecalho.jsp"/>
 <div class="w-75 mx-auto">
     <h3 class="text-center">Listagem de atividades principais</h3>
-    <table class="table">
+    <table class="table text-center">
         <thead>
             <tr>
                 <th>Código</th>
@@ -38,6 +38,6 @@
             <a href="index.jsp" class="btn btn-secondary">Voltar</a>
         </div>
     </div>
-    <p>${mensagem}</p>
+    <p class="text-center">${mensagem}</p>
 </div>
 <jsp:include page="/rodape.jsp"/>
