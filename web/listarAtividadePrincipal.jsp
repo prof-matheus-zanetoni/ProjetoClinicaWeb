@@ -23,7 +23,7 @@
                 <td><%= atividadePrincipal.getCodigoAtividadePrincipal()%></td>
                 <td><%= atividadePrincipal.getDescricaoAtividadePrincipal()%></td>
 
-                <td><a href="ConsultarAtividadePrincipal?codigoAtividadePrincipal=<%= atividadePrincipal.getCodigoAtividadePrincipal()%>" class="btn btn-info">Alterar</a></td>
+                <td><a href="ConsultarAtividadePrincipal?codigoAtividadePrincipal=<%= atividadePrincipal.getCodigoAtividadePrincipal()%>"class="btn btn-info">Alterar</a></td>
 
                 <td><a href="ExcluirAtividadePrincipal?codigoAtividadePrincipal=<%= atividadePrincipal.getCodigoAtividadePrincipal()%>" class="btn btn-danger">Excluir</a></td>
             </tr>
