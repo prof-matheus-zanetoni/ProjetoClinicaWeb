@@ -9,11 +9,11 @@
             <div class="row w-75 mx-auto">
                 <div class="form-group col-6">
                     <label for="codigoAtividadePrincipal">Código:</label>
-                    <input class="form-control" type="text" id="codigoAtividadePrincipal" name="codigoAtividadePrincipal" readonly/>
+                    <input class="form-control" type="text" id="codigoAtividadePrincipal" name="codigoAtividadePrincipal" readonly value="${atividadePrincipal.codigoAtividadePrincipal > 0 ? atividadePrincipal.codigoAtividadePrincipal : ""}"/>
                 </div>
                 <div class="form-group col-6">
                     <label for="descricaoAtividadePrincipal">Descrição:</label>
-                    <input class="form-control" type="text" id="descricaoAtividadePrincipal" name="descricaoAtividadePrincipal" placeholder="Descrição" required/>
+                    <input class="form-control" type="text" id="descricaoAtividadePrincipal" name="descricaoAtividadePrincipal" placeholder="Descrição" required value="${atividadePrincipal.descricaoAtividadePrincipal}"/>
                 </div>
             </div>
             <div class="row mt-3">
