@@ -13,7 +13,11 @@ public class AtividadePrincipal {
     public AtividadePrincipal() {
         
     }
-
+    
+    public AtividadePrincipal(int codigoAtividadePrincipal) {
+        this.codigoAtividadePrincipal = codigoAtividadePrincipal;
+    }
+    
     public int getCodigoAtividadePrincipal() {
         return codigoAtividadePrincipal;
     }
