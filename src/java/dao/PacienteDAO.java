@@ -23,7 +23,7 @@ public class PacienteDAO implements DAOGenerica {
     @Override
     public void cadastrar(Object objeto) throws SQLException {
         Paciente paciente = (Paciente) objeto;
-        String sql = "call cadastrarPaciente(?,?,?,?,?,?,?)";
+        String sql = "call cadastrarPaciente(?,?,?,?,?,?,?,?)";
         PreparedStatement stmt = null;
         try {
             stmt = conexao.prepareStatement(sql);
@@ -34,6 +34,7 @@ public class PacienteDAO implements DAOGenerica {
             stmt.setString(5, paciente.getSenhaPessoa());
             stmt.setString(6, paciente.getNumeroCartaoSusPaciente());
             stmt.setBoolean(7, paciente.isStatusPaciente());
+            stmt.setInt(8, paciente.getAtividadePrincipal().getCodigoAtividadePrincipal());
             stmt.execute();
         } catch (SQLException | ParseException ex) {
             throw new SQLException("Erro ao gravar paciente");
