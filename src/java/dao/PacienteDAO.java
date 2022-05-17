@@ -2,17 +2,20 @@ package dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
+import model.AtividadePrincipal;
 import model.Paciente;
 import utils.Conexao;
 
 public class PacienteDAO implements DAOGenerica {
-    
+
     private Connection conexao;
-    
+
     public PacienteDAO() throws SQLException, ClassNotFoundException {
         conexao = Conexao.abrirConexao();
     }
@@ -42,16 +45,67 @@ public class PacienteDAO implements DAOGenerica {
 
     @Override
     public Object consultar(int codigo) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "select * from paciente pa inner join pessoa pe "
+                + "on pa.codigopaciente = pe.codigopessoa where pe.codigopessoa = ?";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        Paciente paciente = null;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                paciente = new Paciente(rs.getString("numerocartaosuspaciente"),
+                        rs.getBoolean("statuspaciente"), (AtividadePrincipal) (new AtividadePrincipalDAO().consultar(rs.getInt("codigoatividadeprincipal"))),
+                        rs.getInt("codigopessoa"), rs.getString("nomepessoa"),
+                        new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("datanascimentopessoa")),
+                        rs.getString("cpfpessoa"), rs.getString("senhapessoa"));
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new SQLException("Erro ao consultar paciente");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt, rs);
+        }
+        return paciente;
     }
 
     @Override
     public List<Object> listar() throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "select * from paciente pa inner join pessoa pe on pa.codigopaciente = pe.codigopessoa";
+        PreparedStatement stmt = null;
+        ResultSet rs = null;
+        List<Object> lista = new ArrayList<>();
+        try {
+            stmt = conexao.prepareStatement(sql);
+            rs = stmt.executeQuery();
+            while (rs.next()) {
+                Paciente paciente = new Paciente(rs.getString("numerocartaosuspaciente"),
+                        rs.getBoolean("statuspaciente"), (AtividadePrincipal) (new AtividadePrincipalDAO().consultar(rs.getInt("codigoatividadeprincipal"))),
+                        rs.getInt("codigopessoa"), rs.getString("nomepessoa"),
+                        new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("datanascimentopessoa")),
+                        rs.getString("cpfpessoa"), rs.getString("senhapessoa"));
+                lista.add(paciente);
+            }
+        } catch (SQLException | ClassNotFoundException ex) {
+            throw new SQLException("Erro ao listar paciente");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt, rs);
+        }
+        return lista;
     }
 
     @Override
     public void excluir(int codigo) throws SQLException {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        String sql = "delete from paciente where codigopaciente = ?";
+        PreparedStatement stmt = null;
+        try {
+            stmt = conexao.prepareStatement(sql);
+            stmt.setInt(1, codigo);
+            stmt.execute();
+        } catch (SQLException ex) {
+            throw new SQLException("Erro ao excluir paciente");
+        } finally {
+            Conexao.encerrarConexao(conexao, stmt);
+        }
     }
 }
