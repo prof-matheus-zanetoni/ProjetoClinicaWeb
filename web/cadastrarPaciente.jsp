@@ -8,12 +8,38 @@
         <form action="CadastrarPaciente" method="post">
             <div class="row w-75 mx-auto">
                 <div class="form-group col-6">
-                    <label for="codigoAtividadePrincipal">Código:</label>
-                    <input class="form-control" type="text" id="codigoAtividadePrincipal" name="codigoAtividadePrincipal" readonly value="${atividadePrincipal.codigoAtividadePrincipal > 0 ? atividadePrincipal.codigoAtividadePrincipal : ""}"/>
+                    <label for="codigoPessoa">Código:</label>
+                    <input class="form-control" type="text" id="codigoPessoa" name="codigoPessoa" readonly value="${paciente.codigoPessoa > 0 ? paciente.codigoPessoa : ""}"/>
                 </div>
                 <div class="form-group col-6">
-                    <label for="descricaoAtividadePrincipal">Descrição:</label>
-                    <input class="form-control" type="text" id="descricaoAtividadePrincipal" name="descricaoAtividadePrincipal" placeholder="Descrição" required value="${atividadePrincipal.descricaoAtividadePrincipal}"/>
+                    <label for="nomePessoa">Nome:</label>
+                    <input class="form-control" type="text" id="nomePessoa" name="nomePessoa" placeholder="Nome" required value="${paciente.nomePessoa}"/>
+                </div>
+            </div>
+            <div class="row w-75 mx-auto">
+                <div class="form-group col-6">
+                    <label for="dataNascimentoPessoa">Data de nascimento:</label>
+                    <input class="form-control" type="date" id="dataNascimentoPessoa" name="dataNascimentoPessoa" required value="${paciente.dataNascimentoPessoa}"/>
+                </div>
+                <div class="form-group col-6">
+                    <label for="cpfPessoa">CPF:</label>
+                    <input data-mask="000.000.000-00" class="form-control" type="text" id="cpfPessoa" name="cpfPessoa" placeholder="CPF sem pontos e sem traços" required value="${paciente.cpfPessoa}"/>
+                </div>
+            </div>
+            <div class="row w-75 mx-auto">
+                <div class="form-group col-6">
+                    <label for="numeroCartaoSusPaciente">Nº do cartão do SUS:</label>
+                    <input class="form-control" type="text" id="numeroCartaoSusPaciente" name="numeroCartaoSusPaciente" placeholder="Número do cartão do SUS" required value="${paciente.numeroCartaoSusPaciente}"/>
+                </div>
+                <div class="form-group col-6">
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="ativo" name="statusPaciente" value="Ativo" ${paciente.statusPaciente ? "checked" : ""}/>
+                        <label class="form-check-label" for="ativo">Ativo</label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" id="inativo" name="statusPaciente" value="Inativo" ${!paciente.statusPaciente ? "checked" : ""}/>
+                        <label class="form-check-label" for="inativo">Inativo</label>
+                    </div>
                 </div>
             </div>
             <div class="row mt-3">
