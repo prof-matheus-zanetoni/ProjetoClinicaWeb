@@ -1,3 +1,5 @@
+<%@page import="java.util.List"%>
+<%@page import="model.AtividadePrincipal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <jsp:include page="/cabecalho.jsp"/>
 <div class="card">
@@ -42,10 +44,30 @@
                     </div>
                 </div>
             </div>
+            <div class="row w-75 mx-auto">
+                <div class="form-group col-12">
+                    <label for="codigoAtividadePrincipal">Atividade principal:</label>
+                    <% List<AtividadePrincipal> lista = (List<AtividadePrincipal>) 
+                            request.getAttribute("atividadesPrincipais");
+                    %>
+                    <select id="codigoAtividadePrincipal" 
+                            name="codigoAtividadePrincipal" class="form-control" required>
+                        <option value="">Selecione...</option>
+                        <%
+                            for (AtividadePrincipal atividadePrincipal : lista) {
+                        %>
+                        <option value="<%= atividadePrincipal.getCodigoAtividadePrincipal()%>">
+                            <%= atividadePrincipal.getDescricaoAtividadePrincipal() %></option>
+                        <%
+                            }
+                        %>
+                    </select>
+                </div>
+            </div>
             <div class="row mt-3">
                 <div class="form-group col-12 text-center">
                     <button class="btn btn-success" type="submit">Gravar</button>
-                    <a class="btn btn-secondary" href="ListarAtividadePrincipal">Voltar</a>
+                    <a class="btn btn-secondary" href="ListarPaciente">Voltar</a>
                 </div>
             </div>
         </form>
