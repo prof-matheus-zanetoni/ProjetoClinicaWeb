@@ -19,9 +19,7 @@ public class ListarAtividadePrincipal extends HttpServlet {
         
         try {            
             AtividadePrincipalDAO atividadePrincipalDAO = new AtividadePrincipalDAO();
-            
             request.setAttribute("atividadesPrincipais", atividadePrincipalDAO.listar());
-            
         } catch(SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());
         }

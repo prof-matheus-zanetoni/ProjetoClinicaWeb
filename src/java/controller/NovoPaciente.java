@@ -1,7 +1,8 @@
-
 package controller;
 
+import dao.AtividadePrincipalDAO;
 import java.io.IOException;
+import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +16,15 @@ public class NovoPaciente extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        
-        request.setAttribute("paciente", new Paciente());
+
+        try {
+            AtividadePrincipalDAO atividadePrincipalDAO = new AtividadePrincipalDAO();
+            request.setAttribute("paciente", new Paciente());
+            request.setAttribute("atividadesPrincipais", atividadePrincipalDAO.listar());
+        } catch (SQLException | ClassNotFoundException ex) {
+            request.setAttribute("mensagem", ex.getMessage());
+        }
+
         request.getRequestDispatcher("cadastrarPaciente.jsp").forward(request, response);
     }
 
