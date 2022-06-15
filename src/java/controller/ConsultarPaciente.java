@@ -1,5 +1,6 @@
 package controller;
 
+import dao.AtividadePrincipalDAO;
 import dao.PacienteDAO;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -20,6 +21,8 @@ public class ConsultarPaciente extends HttpServlet {
             int codigoPaciente = Integer.parseInt(request.getParameter("codigoPaciente"));
             PacienteDAO pacienteDAO = new PacienteDAO();
             request.setAttribute("paciente", pacienteDAO.consultar(codigoPaciente));
+            AtividadePrincipalDAO atividadePrincipalDAO = new AtividadePrincipalDAO();
+            request.setAttribute("atividadesPrincipais", atividadePrincipalDAO.listar());
         } catch (SQLException | ClassNotFoundException ex) {
             request.setAttribute("mensagem", ex.getMessage());
         }

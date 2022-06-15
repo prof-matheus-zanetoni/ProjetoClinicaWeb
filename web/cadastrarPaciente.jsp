@@ -47,17 +47,14 @@
             <div class="row w-75 mx-auto">
                 <div class="form-group col-12">
                     <label for="codigoAtividadePrincipal">Atividade principal:</label>
-                    <% List<AtividadePrincipal> lista = (List<AtividadePrincipal>) 
-                            request.getAttribute("atividadesPrincipais");
-                    %>
+                    <% List<AtividadePrincipal> lista = (List<AtividadePrincipal>) request.getAttribute("atividadesPrincipais"); %>
                     <select id="codigoAtividadePrincipal" 
                             name="codigoAtividadePrincipal" class="form-control" required>
                         <option value="">Selecione...</option>
                         <%
                             for (AtividadePrincipal atividadePrincipal : lista) {
                         %>
-                        <option value="<%= atividadePrincipal.getCodigoAtividadePrincipal()%>">
-                            <%= atividadePrincipal.getDescricaoAtividadePrincipal() %></option>
+                        <option value="<%= atividadePrincipal.getCodigoAtividadePrincipal()%>"><%= atividadePrincipal.getDescricaoAtividadePrincipal()%></option>
                         <%
                             }
                         %>

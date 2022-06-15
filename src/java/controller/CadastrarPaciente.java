@@ -18,6 +18,7 @@ public class CadastrarPaciente extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
 
+        request.setCharacterEncoding("UTF-8");
         try {
             int codigoPessoa = request.getParameter("codigoPessoa").isEmpty() 
                     ? 0 : Integer.parseInt(request.getParameter("codigoPessoa"));

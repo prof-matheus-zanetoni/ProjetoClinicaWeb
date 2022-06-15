@@ -14,7 +14,7 @@ public class Paciente extends Pessoa {
     }
     
     public Paciente() {
-        super(0, null, null, null, null);
+        super(0, "", "", "", "");
     }
 
     public String getNumeroCartaoSusPaciente() {

@@ -54,7 +54,7 @@ public class PacienteDAO implements DAOGenerica {
             stmt.setInt(1, codigo);
             rs = stmt.executeQuery();
             while (rs.next()) {
-                paciente = new Paciente(rs.getString("numerocartaosuspaciente"), rs.getBoolean("statuspaciente"), (AtividadePrincipal) (new AtividadePrincipalDAO().consultar(rs.getInt("codigoatividadeprincipal"))), rs.getInt("codigopessoa"), rs.getString("nomepessoa"), new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("datanascimentopessoa")), rs.getString("cpfpessoa"), rs.getString("senhapessoa"));
+                paciente = new Paciente(rs.getString("numerocartaosuspaciente"), rs.getBoolean("statuspaciente"), (AtividadePrincipal) (new AtividadePrincipalDAO().consultar(rs.getInt("codigoatividadeprincipal"))), rs.getInt("codigopessoa"), rs.getString("nomepessoa"), new SimpleDateFormat("yyyy-MM-dd").format(rs.getDate("datanascimentopessoa")), rs.getString("cpfpessoa"), rs.getString("senhapessoa"));
             }
         } catch (SQLException | ClassNotFoundException ex) {
             throw new SQLException("Erro ao consultar paciente");
