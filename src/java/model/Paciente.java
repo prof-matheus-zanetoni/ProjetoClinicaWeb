@@ -12,6 +12,10 @@ public class Paciente extends Pessoa {
         this.statusPaciente = statusPaciente;
         this.atividadePrincipal = atividadePrincipal;
     }
+    
+    public Paciente() {
+        super(0, "", "", "", "");
+    }
 
     public String getNumeroCartaoSusPaciente() {
         return numeroCartaoSusPaciente;
