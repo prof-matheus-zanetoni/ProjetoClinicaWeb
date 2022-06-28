@@ -1,3 +1,4 @@
+<%@page import="model.Paciente"%>
 <%@page import="java.util.List"%>
 <%@page import="model.AtividadePrincipal"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -47,14 +48,17 @@
             <div class="row w-75 mx-auto">
                 <div class="form-group col-12">
                     <label for="codigoAtividadePrincipal">Atividade principal:</label>
-                    <% List<AtividadePrincipal> lista = (List<AtividadePrincipal>) request.getAttribute("atividadesPrincipais"); %>
+                    <% 
+                        List<AtividadePrincipal> lista = (List<AtividadePrincipal>) request.getAttribute("atividadesPrincipais"); 
+                        Paciente paciente = (Paciente) request.getAttribute("paciente");
+                    %>
                     <select id="codigoAtividadePrincipal" 
                             name="codigoAtividadePrincipal" class="form-control" required>
                         <option value="">Selecione...</option>
                         <%
                             for (AtividadePrincipal atividadePrincipal : lista) {
                         %>
-                        <option value="<%= atividadePrincipal.getCodigoAtividadePrincipal()%>"><%= atividadePrincipal.getDescricaoAtividadePrincipal()%></option>
+                        <option value="<%= atividadePrincipal.getCodigoAtividadePrincipal()%>" <%= paciente.getAtividadePrincipal().getCodigoAtividadePrincipal() == atividadePrincipal.getCodigoAtividadePrincipal() ? "selected" : "" %> ><%= atividadePrincipal.getDescricaoAtividadePrincipal()%></option>
                         <%
                             }
                         %>

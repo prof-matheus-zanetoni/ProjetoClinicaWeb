@@ -13,6 +13,11 @@ public class Paciente extends Pessoa {
         this.atividadePrincipal = atividadePrincipal;
     }
     
+    public Paciente(AtividadePrincipal atividadePrincipal) {
+        super(0, "", "", "", "");
+        this.atividadePrincipal = atividadePrincipal;
+    }
+    
     public Paciente() {
         super(0, "", "", "", "");
     }
