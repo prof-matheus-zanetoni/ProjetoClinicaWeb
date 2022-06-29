@@ -4,5 +4,6 @@
         </footer>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://igorescobar.github.io/jQuery-Mask-Plugin/js/jquery.mask.min.js"></script>
+        <script src="${pageContext.request.contextPath}/ScriptBuscarPessoa.js"></script>
     </body>
 </html>
