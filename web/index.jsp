@@ -5,7 +5,7 @@
         <h3>Menu principal</h3>
     </div>
     <div class="card-body text-center">
-        <a class="btn btn-primary">Pacientes</a>
+        <a class="btn btn-primary" href="ListarPaciente">Pacientes</a>
         <a class="btn btn-info">Médicos</a>
         <a class="btn btn-light">Consultas</a>
         <a href="ListarAtividadePrincipal" class="btn btn-secondary">Atividades principais</a>

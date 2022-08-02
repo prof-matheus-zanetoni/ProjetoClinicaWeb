@@ -58,7 +58,7 @@ public class PacienteDAO implements DAOGenerica {
                 paciente = new Paciente(rs.getString("numerocartaosuspaciente"),
                         rs.getBoolean("statuspaciente"), (AtividadePrincipal) (new AtividadePrincipalDAO().consultar(rs.getInt("codigoatividadeprincipal"))),
                         rs.getInt("codigopessoa"), rs.getString("nomepessoa"),
-                        new SimpleDateFormat("dd/MM/yyyy").format(rs.getDate("datanascimentopessoa")),
+                        new SimpleDateFormat("yyyy-MM-dd").format(rs.getDate("datanascimentopessoa")),
                         rs.getString("cpfpessoa"), rs.getString("senhapessoa"));
             }
         } catch (SQLException | ClassNotFoundException ex) {

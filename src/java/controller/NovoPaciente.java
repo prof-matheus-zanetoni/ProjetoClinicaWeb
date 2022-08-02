@@ -3,11 +3,13 @@ package controller;
 import dao.AtividadePrincipalDAO;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.AtividadePrincipal;
 import model.Paciente;
 
 @WebServlet(name = "NovoPaciente", urlPatterns = {"/NovoPaciente"})
@@ -18,7 +20,7 @@ public class NovoPaciente extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
 
         try {
-            request.setAttribute("paciente", new Paciente());
+            request.setAttribute("paciente", new Paciente(new AtividadePrincipal()));
             AtividadePrincipalDAO atividadePrincipalDAO = new AtividadePrincipalDAO();
             request.setAttribute("atividadesPrincipais", atividadePrincipalDAO.listar());
         } catch (SQLException | ClassNotFoundException ex) {
